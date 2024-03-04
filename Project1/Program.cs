@@ -16,22 +16,15 @@ namespace Project1
             //While true, play the game and show a question afterwards
             while(playAgain)
             {
-                PlayGame();
-
-                //Ask the user if they want to play again
-                Console.WriteLine("Want to play again? Y/N");
-                string userInput = Console.ReadLine();
-
-                //Making sure there isn't an error based on case sensitive input
-                playAgain = userInput.ToLower() == "y";
-                //If the user enters "y", it comes back as a 'true' value, thus playing the game again
-                //If the user enters anything but "y", the value turns 'false' and doesn't fire the play game function
+                //Setting a value to the 'state' of the function is an easy way to re-run the program based on a Y/N boolean question. 
+                playAgain = PlayGame();
             }
             Console.WriteLine("Thanks for playing!");
         }
-        static void PlayGame()
+        //Made the function a boolean value to initate the program to run the game again
+        static bool PlayGame()
         {
-            Console.WriteLine("Welcome to my little game!");
+            Console.WriteLine("Welcome to the Game!");
             Console.Write("Plese select either Rock, Paper or Scissors: ");
             //Grab the users choice
             string userChoice = Console.ReadLine();
@@ -54,7 +47,10 @@ namespace Project1
             {
                 Console.WriteLine("Tie Game!");
             }
-            Console.ReadLine();
+            Console.WriteLine("Want to play again? Y/N");
+            string userInput = Console.ReadLine();
+            return userInput.ToLower() == "y";
+            //Returning "y" will set the PlayGame() function to true, thus making the game run again
         }
     }
 }
